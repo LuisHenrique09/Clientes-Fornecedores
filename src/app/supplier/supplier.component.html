@@ -1,1 +1,40 @@
-<p>supplier works!</p>
+<div class="row">
+  <div class="col-8 m-auto">
+    <form [formGroup]="formGroupClient">
+        <div class="mb-3">
+        <label for="name" class="form-label"></label>
+        <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="Nome">
+        <div class="mb-3">
+          <label for="valor" class="form-label"></label>
+          <input type="text" formControlName="valor" class="form-control" id="valor" placeholder="Preço">
+      </div>
+    </div>
+    <div class="mb-3 d-flex justify-content-end">
+      <button class="btn btn-outline-success" (click)="save()">Salvar</button>
+    </div>
+
+    </form>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Preço</th>
+        <th scope="col">Produto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let atributos2 of supplier" >
+        <th scope="row">{{atributos2.id}}</th>
+        <td>{{atributos2.nome}}</td>
+        <td>{{atributos2.valor}}</td>
+        <td>{{atributos2.produto}}</td>
+        <td>
+          <button class="btn btn-primary me-1" >Editar</button>
+          <button class="btn btn-danger me-1" >Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

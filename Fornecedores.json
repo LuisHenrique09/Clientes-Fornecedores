@@ -1,0 +1,46 @@
+{
+  "Atributos2": [
+    {
+      "id": 468,
+      "nome": "Jorge",
+      "produto": "Caneta",
+      "valor": 1.99
+    },
+    {
+      "id": 888,
+      "nome": "Wellington",
+      "produto": "Caderno",
+      "valor": 7.99
+    },
+    {
+      "id": 354,
+      "nome": "Roberto",
+      "produto": "Pasta",
+      "valor": 2.99
+    },
+    {
+      "id": 889,
+      "nome": "Manuel",
+      "produto": "",
+      "valor": ""
+    },
+    {
+      "id": 890,
+      "nome": null,
+      "produto": null,
+      "valor": null
+    },
+    {
+      "id": 891,
+      "nome": "adasddsa",
+      "produto": null,
+      "valor": null
+    },
+    {
+      "id": 892,
+      "nome": "aagdsfa",
+      "produto": "",
+      "valor": "8.99"
+    }
+  ]
+}
