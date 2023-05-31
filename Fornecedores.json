@@ -1,46 +1,31 @@
 {
   "Atributos2": [
     {
-      "id": 468,
-      "nome": "Jorge",
-      "produto": "Caneta",
-      "valor": 1.99
-    },
-    {
-      "id": 888,
-      "nome": "Wellington",
-      "produto": "Caderno",
-      "valor": 7.99
-    },
-    {
-      "id": 354,
+      "id": 1,
       "nome": "Roberto",
-      "produto": "Pasta",
-      "valor": 2.99
+      "produto": "Capinhas",
+      "valor": "15.99",
+      "distribuidoras": "",
+      "distribuidoras2": true,
+      "distribuidoras3": ""
     },
     {
-      "id": 889,
-      "nome": "Manuel",
-      "produto": "",
-      "valor": ""
+      "id": 2,
+      "nome": "Peixoto",
+      "produto": "Fones",
+      "valor": "10.99",
+      "distribuidoras": true,
+      "distribuidoras2": true,
+      "distribuidoras3": ""
     },
     {
-      "id": 890,
-      "nome": null,
-      "produto": null,
-      "valor": null
-    },
-    {
-      "id": 891,
-      "nome": "adasddsa",
-      "produto": null,
-      "valor": null
-    },
-    {
-      "id": 892,
-      "nome": "aagdsfa",
-      "produto": "",
-      "valor": "8.99"
+      "id": 3,
+      "nome": "Gilberto",
+      "produto": "Carregadores",
+      "valor": "39.99",
+      "distribuidoras": true,
+      "distribuidoras2": true,
+      "distribuidoras3": true
     }
   ]
 }

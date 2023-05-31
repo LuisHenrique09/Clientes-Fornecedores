@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SupplierService {
+  
   url = "http://localhost:5000/Atributos2"
   constructor(private http: HttpClient) { }
 
@@ -16,6 +17,14 @@ export class SupplierService {
 
   save(supplier: Atributos2): Observable<Atributos2>{
     return this.http.post<Atributos2>(this.url, supplier);
+  }
+
+  delete(supplier: Atributos2) : Observable<void>{
+    return this.http.delete<void>(`${this.url}/${supplier.id}`);
+  }
+
+  edit(supplier: Atributos2) : Observable<Atributos2>{
+    return this.http.put<Atributos2>(`${this.url}/${supplier.id}`, supplier);
   }
 
 }

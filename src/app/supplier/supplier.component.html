@@ -3,7 +3,7 @@
     <form [formGroup]="formGroupClient">
 
         <div class="mb-3">
-        <label for="name" class="form-label">Nome:</label>
+        <label for="name" class="form-label">Nome do Fornecedor:</label>
         <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="Nome">
       </div>
 
@@ -16,9 +16,16 @@
       <label for="valor" class="form-label">Preço:</label>
       <input type="text" formControlName="valor" class="form-control" id="valor" placeholder="Preço">
   </div>
+
+  <div class="mb-1">
+    <label for="distribuidoras" class="form-label">Distribuidoras:</label><br>
+    <input type="checkbox" value="1" formControlName="distribuidoras" id="distribuidoras"> Amazon
+    <br><input type="checkbox" value="2" formControlName="distribuidoras2" id="distribuidoras2"> Shopee
+    <br><input type="checkbox" value="3" formControlName="distribuidoras3" id="distribuidoras3"> Magalu
+  </div>
     
     <div class="mb-3 d-flex justify-content-end">
-      <button class="btn btn-outline-warning me-2" >Limpar</button>
+      <button class="btn btn-outline-warning me-2" (click)="clean()">Limpar</button>
       <button class="btn btn-outline-success" (click)="save()">Salvar</button>
     </div>
 
@@ -32,6 +39,7 @@
         <th scope="col">Nome</th>
         <th scope="col">Produto</th>
         <th scope="col">Preço</th>
+        <th scope="col">Distribuidora(as)</th>
       </tr>
     </thead>
     <tbody>
@@ -40,10 +48,14 @@
         <td>{{atributos2.nome}}</td>
         <td>{{atributos2.produto}}</td>
         <td>{{atributos2.valor}}</td>
-        <td>{{atributos2.distribuidoras}}</td>
         <td>
-          <button class="btn btn-primary me-1" >Editar</button>
-          <button class="btn btn-danger me-1" >Excluir</button>
+          <span *ngIf="atributos2.distribuidoras">Amazon</span>
+          <span *ngIf="atributos2.distribuidoras2">Shopee</span>
+          <span *ngIf="atributos2.distribuidoras3">Magalu</span>
+        </td>
+        <td>
+          <button class="btn btn-outline-info me-2" (click)="edit(atributos2)">Editar</button>
+          <button class="btn btn-outline-danger" (click)="delete(atributos2)">Excluir</button>
         </td>
       </tr>
     </tbody>

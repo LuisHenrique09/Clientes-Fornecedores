@@ -13,6 +13,8 @@ export class SupplierComponent implements OnInit {
   supplier: Atributos2[] = [];
 
   formGroupClient : FormGroup;
+  isEditing: any;
+  submitted: boolean | undefined;
 
   constructor (private SupplierService: SupplierService,
     private FormBuilder: FormBuilder
@@ -21,31 +23,67 @@ export class SupplierComponent implements OnInit {
         id : [''],
         nome : [''],
         produto : [''],
-        valor : ['']
+        valor : [''],
+        distribuidoras : [''],
+        distribuidoras2 : [''],
+        distribuidoras3 : ['']
       });
     }
 
-  ngOnInit(): void {
-    this.loadSupplier();
-  }
-
-  loadSupplier() {
-    this.SupplierService.getSupplier().subscribe(
-    {
-      next : data => this.supplier = data
+    ngOnInit(): void {
+      this.loadHome();
     }
-    );
-  }
-
-  save() {
-    this.SupplierService.save(this.formGroupClient.value).subscribe(
-      {
-        next: data => {
-          this.supplier.push(data);
-          this.formGroupClient.reset();
+    loadHome() {
+      this.SupplierService.getSupplier().subscribe(
+        {
+          next : data => this.supplier = data
         }
+      );
+    }
+  
+    save() {
+      if(this.isEditing)
+      {
+        this.SupplierService.edit(this.formGroupClient.value).subscribe(
+          {
+            next: () => {
+              this.loadHome();
+              this.formGroupClient.reset
+              this.isEditing = false;
+            }
+          }
+        )
       }
-    );
-  }
+      else{
+        this.SupplierService.save(this.formGroupClient.value).subscribe(
+          {
+            next: data => {
+              this.supplier.push(data)
+              this.formGroupClient.reset();
+            }
+          }
+          );
+      }
+  
+  
+      
+    }
+  
+    delete(supplier: Atributos2){
+      this.SupplierService.delete(supplier).subscribe({
+        next: () => this.loadHome()
+      })
+    }
+  
+    edit(supplier: Atributos2){
+      this.formGroupClient.setValue(supplier);
+      this.isEditing = true;
+    }
+
+    clean(){
+      this.formGroupClient.reset()
+      this.isEditing = false;
+      this.submitted = false;
+    }
 
 }
