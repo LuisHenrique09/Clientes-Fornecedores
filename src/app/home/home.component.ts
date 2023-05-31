@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   home: Atributos[] = [];
 
   formGroupClient : FormGroup;
+  isEditing: any;
+  submitted: boolean | undefined;
 
   constructor (private HomeService: HomeService,
     private formBuilder: FormBuilder
@@ -22,33 +24,67 @@ export class HomeComponent implements OnInit {
         nome : [''],
         telefone : [''],
         email : [''],
-        endereco : ['']
+        endereco : [''],
+        pagamento : ['']
       });
 
     }
 
 
-  ngOnInit(): void {
-    this.loadHome();
-  }
-
-  loadHome() {
-    this.HomeService.getHome().subscribe(
-    {
-      next : data => this.home = data
+    ngOnInit(): void {
+      this.loadHome();
     }
-  );
-  }
-
-  save() {
-    this.HomeService.save(this.formGroupClient.value).subscribe(
-      {
-        next: data => {
-          this.home.push(data);
-          this.formGroupClient.reset();
+    loadHome() {
+      this.HomeService.getHome().subscribe(
+        {
+          next : data => this.home = data
         }
+      );
+    }
+  
+    save() {
+      if(this.isEditing)
+      {
+        this.HomeService.edit(this.formGroupClient.value).subscribe(
+          {
+            next: () => {
+              this.loadHome();
+              this.formGroupClient.reset
+              this.isEditing = false;
+            }
+          }
+        )
       }
-    );
-  }
+      else{
+        this.HomeService.save(this.formGroupClient.value).subscribe(
+          {
+            next: data => {
+              this.home.push(data)
+              this.formGroupClient.reset();
+            }
+          }
+          );
+      }
+  
+  
+      
+    }
+  
+    delete(home: Atributos){
+      this.HomeService.delete(home).subscribe({
+        next: () => this.loadHome()
+      })
+    }
+  
+    edit(home: Atributos){
+      this.formGroupClient.setValue(home);
+      this.isEditing = true;
+    }
+
+    clean(){
+      this.formGroupClient.reset()
+      this.isEditing = false;
+      this.submitted = false;
+    }
 
 }

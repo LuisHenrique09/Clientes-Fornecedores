@@ -1,22 +1,47 @@
 <div class="row">
   <div class="col-8 m-auto">
     <form [formGroup]="formGroupClient">
-        <div class="mb-3">
-        <label for="name" class="form-label"></label>
+
+      <div class="mb-2">
+        <label for="name" class="form-label">Nome:</label>
         <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="Nome">
-        <div class="mb-3">
-          <label for="email" class="form-label"></label>
-          <input type="text" formControlName="email" class="form-control" id="email" placeholder="Email">
       </div>
+
+      <div class="mb-2">
+        <label for="telefone" class="form-label">Telefone:</label>
+        <input type="text" formControlName="telefone" class="form-control" id="telefone" placeholder="Telefone">
+      </div>
+
+      <div class="mb-2">
+        <label for="email" class="form-label">Email:</label>
+        <input type="text" formControlName="email" class="form-control" id="email" placeholder="Email">
+      </div>
+
+      <div class="mb-2">
+        <label for="endereco" class="form-label">Endereço:</label>
+        <input type="text" formControlName="endereco" class="form-control" id="endereco" placeholder="Endereço">
     </div>
-    <div class="mb-3 d-flex justify-content-end">
-      <button class="btn btn-outline-success" (click)="save()">Salvar</button>
-    </div>
+
+      <div class="mb-2">
+        <label for="pagamento" class="form-label">Forma de Pagamento:</label>
+        <br>
+        <input type="radio" value="Dinheiro" formControlName="pagamento" id="pagamento"> Dinheiro
+        <br>
+        <input type="radio" value="Cartão de Crédito (Débito)" formControlName="pagamento" id="pagamento"> Cartão de Crédito (Débito)
+        <br>
+        <input type="radio" value="Pix" formControlName="pagamento" id="pagamento"> Pix
+      </div>
+
+
+      <div class="mb-3 d-flex justify-content-end">
+        <button class="btn btn-outline-warning me-2" (click)="clean()">Limpar</button>
+        <button class="btn btn-outline-success" (click)="save()">Salvar</button>
+      </div>
 
     </form>
-</div>
+  </div>
 
-<table class="table table-striped table-hover">
+  <table class="table table-striped table-hover">
     <thead>
       <tr>
         <th scope="col">Id</th>
@@ -24,18 +49,20 @@
         <th scope="col">Telefone</th>
         <th scope="col">Email</th>
         <th scope="col">Endereço</th>
+        <th scope="col">Pagamento</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let atributos of home" >
+      <tr *ngFor="let atributos of home">
         <th scope="row">{{atributos.id}}</th>
         <td>{{atributos.nome}}</td>
         <td>{{atributos.telefone}}</td>
         <td>{{atributos.email}}</td>
         <td>{{atributos.endereco}}</td>
+        <td>{{atributos.pagamento}}</td>
         <td>
-          <button class="btn btn-primary me-1" >Editar</button>
-          <button class="btn btn-danger me-1" >Excluir</button>
+          <button class="btn btn-outline-info me-2" (click)="edit(atributos)">Editar</button>
+          <button class="btn btn-outline-danger" (click)="delete(atributos)">Excluir</button>
         </td>
       </tr>
     </tbody>

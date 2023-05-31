@@ -1,15 +1,24 @@
 <div class="row">
   <div class="col-8 m-auto">
     <form [formGroup]="formGroupClient">
+
         <div class="mb-3">
-        <label for="name" class="form-label"></label>
+        <label for="name" class="form-label">Nome:</label>
         <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="Nome">
-        <div class="mb-3">
-          <label for="valor" class="form-label"></label>
-          <input type="text" formControlName="valor" class="form-control" id="valor" placeholder="Preço">
       </div>
+
+      <div class="mb-3">
+        <label for="produto" class="form-label">Produto:</label>
+        <input type="text" formControlName="produto" class="form-control" id="produto" placeholder="Produto">
     </div>
+
+    <div class="mb-3">
+      <label for="valor" class="form-label">Preço:</label>
+      <input type="text" formControlName="valor" class="form-control" id="valor" placeholder="Preço">
+  </div>
+    
     <div class="mb-3 d-flex justify-content-end">
+      <button class="btn btn-outline-warning me-2" >Limpar</button>
       <button class="btn btn-outline-success" (click)="save()">Salvar</button>
     </div>
 
@@ -21,16 +30,17 @@
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Nome</th>
-        <th scope="col">Preço</th>
         <th scope="col">Produto</th>
+        <th scope="col">Preço</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let atributos2 of supplier" >
         <th scope="row">{{atributos2.id}}</th>
         <td>{{atributos2.nome}}</td>
-        <td>{{atributos2.valor}}</td>
         <td>{{atributos2.produto}}</td>
+        <td>{{atributos2.valor}}</td>
+        <td>{{atributos2.distribuidoras}}</td>
         <td>
           <button class="btn btn-primary me-1" >Editar</button>
           <button class="btn btn-danger me-1" >Excluir</button>

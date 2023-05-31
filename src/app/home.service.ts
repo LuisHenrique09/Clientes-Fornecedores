@@ -18,5 +18,14 @@ export class HomeService {
   save(home: Atributos): Observable<Atributos>{
     return this.http.post<Atributos>(this.url, home);
   }
+
+  delete(home: Atributos) : Observable<void>{
+    return this.http.delete<void>(`${this.url}/${home.id}`);
+  }
+
+  edit(home: Atributos) : Observable<Atributos>{
+    return this.http.put<Atributos>(`${this.url}/${home.id}`, home);
+  }
+ 
   
 }

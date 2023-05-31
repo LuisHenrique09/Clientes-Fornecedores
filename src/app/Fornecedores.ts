@@ -3,4 +3,5 @@ export interface Atributos2{
     nome: string;
     produto: string;
     valor: number;
+    distribuidoras: string;
   }

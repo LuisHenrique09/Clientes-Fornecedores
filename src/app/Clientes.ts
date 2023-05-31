@@ -4,4 +4,5 @@ export interface Atributos{
     telefone: number;
     email: string;
     endereco: string;
+    pagamento: string;
   }
